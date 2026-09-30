@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: identity-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/identity_db
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# JWT: secret là chuỗi Base64 của 32 byte (256-bit) -> đủ cho HS256
+jwt-secret: ${JWT_SECRET:85DdwKeGudJJUVrGYkyhbRyPaKXOJfXHA9nn9xlwVtI=}
+jwt-expiration: 3600000 # 1 giờ (ms)
